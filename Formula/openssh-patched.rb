@@ -15,7 +15,7 @@ class OpensshPatched < Formula
 
   depends_on "autoconf" => :build # if build.with? "keychain-support"
   depends_on "automake" => :build
-  depends_on "openssl"
+  depends_on "libressl"
   depends_on "ldns" => :optional
   depends_on "pkg-config" => :build if build.with? "ldns"
 
@@ -78,7 +78,7 @@ class OpensshPatched < Formula
       --prefix=#{prefix}
       --sysconfdir=#{etc}/ssh
       --with-pam
-      --with-ssl-dir=#{Formula["openssl"].opt_prefix}
+      --with-ssl-dir=#{Formula["libressl"].opt_prefix}
     ]
 
     args << "--with-ldns" if build.with? "ldns"
